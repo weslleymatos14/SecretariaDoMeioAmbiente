@@ -1,46 +1,47 @@
 ﻿@model Cadastro
 
 @{
+    Layout = "_Login";
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1>Cadastrar</h1>
+<body class="text-center">
+    <section class="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <img class="mb-4" src="~/lib/bootstrap/brand/Brazao.gif" alt="" width="100" height="100">
+        <h1 class="h3 mb-3 font-weight-normal">@ViewData["Title"]</h1>
+        <div class="row text-center">
+            <div class="col-sm-4 offset-4">
+                <form asp-action="Cadastrar" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input asp-for="Nome" class="form-control" placeholder="Nome" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
 
-<h4>Categoria</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Cadastrar" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmaSenha" class="control-label"></label>
-                <input asp-for="ConfirmaSenha" class="form-control" />
-                <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
-            </div>
+                        <input asp-for="Email" class="form-control" placeholder="E-mail" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
 
-            <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                        <input asp-for="Senha" class="form-control" placeholder="Senha" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+
+                        <input asp-for="ConfirmaSenha" class="form-control" placeholder="Confirmar Senha" />
+                        <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-lg btn-primary btn-block" />
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
 
-<div>
-    <a asp-action="Index" asp-controller="categoria">Voltar</a>
-</div>
-
+        <div>
+            <a asp-action="Index">Voltar</a>
+        </div>
+    </section>
+</body>

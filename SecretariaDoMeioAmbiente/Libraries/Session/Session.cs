@@ -36,6 +36,11 @@ namespace SecretariaDoMeioAmbiente.Libraries.Session
             }
         }
 
+        public void RemoverTodos()
+        {            
+                _context.HttpContext.Session.Clear();           
+        }
+
         public string Consultar(string key)
         {
             return _context.HttpContext.Session.GetString(key);

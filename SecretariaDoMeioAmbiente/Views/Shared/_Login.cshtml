@@ -16,25 +16,13 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
-    <header>
-
-        <div class="container">
-            <a class="btn btn-primary btn-block col-sm-3" asp-area="" asp-controller="Home" asp-action="Index">Secretaria Do Meio Ambiente</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-
-    </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+    
+    
             @RenderBody()
-        </main>
-    </div>
+       
 
     <footer class="border-top footer text-muted">
         <div class="container">

@@ -1,45 +1,45 @@
 ﻿@model Cadastro
+
 @{
     Layout = "_Login";
     ViewData["Title"] = "Entrar";
 }
+<html lang="pt-br">
 
-<main role="main">
-    <br />
-    <br />
+<body class="text-center">
     <section class="container">
         <aside class="col-sm-4 offset-4">
-            <div id="code_login_1">
-                <div class="card">
-
-                    <div class="card">
-                        <header class="card-header">
-                            <a asp-action="Cadastrar" class="float-right btn btn-outline-primary">Cadastrar-se</a>
-                            <h4 class="card-title mb-4 mt-1">@ViewData["Title"]</h4>
-                        </header>
-                    </div>
-                    <article class="card-body">
-                        <form method="post">
-                            @if (TempData["MSG_S"] != null)
-                            {
-                                <p class="alert alert-success">@Html.Raw(TempData["MSG_S"])</p>
-                            }
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input asp-for="Email" class="form-control" placeholder="Email" type="email">
-                            </div>
-                            <div class="form-group">
-                                <a class="float-right" href="#">Esqueci a senha</a>
-                                <label>Senha</label>
-                                <input asp-for="Senha" class="form-control" placeholder="********" type="password">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block"> Entrar </button>
-                            </div>
-                        </form>
-                    </article>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <form method="post" class="align-middle">
+                <img class="mb-4" src="~/lib/bootstrap/brand/Brazao.gif" alt="" width="100" height="100">
+                <h1 class="h3 mb-3 font-weight-normal">@ViewData["Title"]</h1>
+                @if (TempData["MSG_S"] != null)
+                {
+                    <p class="alert alert-success">@Html.Raw(TempData["MSG_S"])</p>
+                }
+                @if (ViewData["MSG_E"] != null)
+                {
+                    <p class="alert alert-danger">@Html.Raw(ViewData["MSG_E"])</p>
+                }
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input asp-for="Senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+                <div>
+                    <a asp-action="Cadastrar">Cadastrar-se</a>
                 </div>
-            </div>
+                <div class="form-group">
+                    <br />
+                    <button type="submit" class="btn btn-lg btn-primary btn-block"> Entrar </button>
+                </div>
+            </form>
+
         </aside>
     </section>
-</main>
+</body>
+</html>

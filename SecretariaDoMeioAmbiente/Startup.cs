@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SecretariaDoMeioAmbiente.Data;
+using SecretariaDoMeioAmbiente.Libraries.Login;
+using SecretariaDoMeioAmbiente.Libraries.Session;
 using SecretariaDoMeioAmbiente.Models;
 using SecretariaDoMeioAmbiente.Services;
 
@@ -39,10 +41,14 @@ namespace SecretariaDoMeioAmbiente
             services.AddSession();
             services.AddMemoryCache();
 
+
+            services.AddScoped<Session>();
+            services.AddScoped<LoginCadastro>();
+            services.AddScoped<CadastroService>();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<SecretariaDoMeioAmbienteContext>(options => options.UseSqlServer("Server=.\\SQLEXPRESS;Database=SecretariaDoMeioAmbienteDb;Integrated Security=True"));
-
-            services.AddScoped<CadastroService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,11 +65,12 @@ namespace SecretariaDoMeioAmbiente
                 app.UseHsts();
             }
 
-            
-            app.UseSession();
+
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

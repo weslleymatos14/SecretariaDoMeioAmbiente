@@ -19,6 +19,7 @@ namespace SecretariaDoMeioAmbiente.Services
         public void Cadastrar(Cadastro cadastro)
         {
             _context.Cadastros.Add(cadastro);
+            _context.SaveChanges();
         }
 
         public void Atualizar(Cadastro cadastro)
@@ -27,6 +28,7 @@ namespace SecretariaDoMeioAmbiente.Services
                 _context.Cadastros.Remove(cadastro);
 
             _context.Cadastros.Add(cadastro);
+            _context.SaveChanges();
 
         }
 
@@ -34,6 +36,8 @@ namespace SecretariaDoMeioAmbiente.Services
         {
             if (Existe(cadastro.Id) != false)
                 _context.Cadastros.Remove(cadastro);
+
+            _context.SaveChanges();
         }
 
         public bool Existe(int id)
@@ -43,6 +47,13 @@ namespace SecretariaDoMeioAmbiente.Services
                 return true;
 
             return false;
+        }
+
+        public Cadastro Login(string email, string senha)
+        {
+            var cadastro = _context.Cadastros.Where(x => x.Email == email && x.Senha == senha).FirstOrDefault();
+            return cadastro;
+
         }
     }
 }
