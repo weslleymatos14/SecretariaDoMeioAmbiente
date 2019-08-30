@@ -1,0 +1,45 @@
+﻿@model Cadastro
+@{
+    Layout = "_Login";
+    ViewData["Title"] = "Entrar";
+}
+
+<main role="main">
+    <br />
+    <br />
+    <section class="container">
+        <aside class="col-sm-4 offset-4">
+            <div id="code_login_1">
+                <div class="card">
+
+                    <div class="card">
+                        <header class="card-header">
+                            <a asp-action="Cadastrar" class="float-right btn btn-outline-primary">Cadastrar-se</a>
+                            <h4 class="card-title mb-4 mt-1">@ViewData["Title"]</h4>
+                        </header>
+                    </div>
+                    <article class="card-body">
+                        <form method="post">
+                            @if (TempData["MSG_S"] != null)
+                            {
+                                <p class="alert alert-success">@Html.Raw(TempData["MSG_S"])</p>
+                            }
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input asp-for="Email" class="form-control" placeholder="Email" type="email">
+                            </div>
+                            <div class="form-group">
+                                <a class="float-right" href="#">Esqueci a senha</a>
+                                <label>Senha</label>
+                                <input asp-for="Senha" class="form-control" placeholder="********" type="password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Entrar </button>
+                            </div>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </aside>
+    </section>
+</main>
