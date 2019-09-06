@@ -53,10 +53,19 @@ namespace SecretariaDoMeioAmbiente.Controllers
         {
             if(ModelState.IsValid)
             {
-                _cadastroContext.Cadastrar(cadastro);
+                if (_cadastroContext.EmailJaCadastrado(cadastro.Email))
+                {
+                    TempData["MSG_E"] = "Email já cadastrado!";
+                    return RedirectToAction(nameof(Index));
+                    
+                }
+                else
+                {
+                    _cadastroContext.Cadastrar(cadastro);
 
-                TempData["MSG_S"] = "Cadastro realizado com sucesso!";
-                return RedirectToAction(nameof(Index));
+                    TempData["MSG_S"] = "Cadastro realizado com sucesso!";
+                    return RedirectToAction(nameof(Index));
+                }
             }
             return View();
             

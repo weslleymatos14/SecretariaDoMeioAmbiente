@@ -49,6 +49,15 @@ namespace SecretariaDoMeioAmbiente.Services
             return false;
         }
 
+        public bool EmailJaCadastrado(string email)
+        {
+            var existe = _context.Cadastros.Where(x=> x.Email == email).FirstOrDefault();
+            if (existe != null)
+                return true;
+
+            return false;
+        }
+
         public Cadastro Login(string email, string senha)
         {
             var cadastro = _context.Cadastros.Where(x => x.Email == email && x.Senha == senha).FirstOrDefault();

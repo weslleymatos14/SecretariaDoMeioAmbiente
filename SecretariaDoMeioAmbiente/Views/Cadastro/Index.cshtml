@@ -22,9 +22,9 @@
                 {
                     <p class="alert alert-success">@Html.Raw(TempData["MSG_S"])</p>
                 }
-                @if (ViewData["MSG_E"] != null)
+                @if (TempData["MSG_E"] != null)
                 {
-                    <p class="alert alert-danger">@Html.Raw(ViewData["MSG_E"])</p>
+                    <p class="alert alert-danger">@Html.Raw(TempData["MSG_E"])</p>
                 }
                 <label for="inputEmail" class="sr-only">Email address</label>
                 <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
